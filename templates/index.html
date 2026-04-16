@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Craft</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+            background: linear-gradient(135deg, lightblue, lavender);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 10px 25px gray;
+        }
+
+        input, select {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid gray;
+        }
+
+        button {
+            width: 95%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: green;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            background: darkgreen;
+        }
+
+        .reset-btn {
+            background: red;
+        }
+
+        .reset-btn:hover {
+            background: darkred;
+        }
+
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            background: lightgray;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .error {
+            margin-top: 15px;
+            padding: 10px;
+            background: mistyrose;
+            color: red;
+            border-radius: 8px;
+        }
+
+        p {
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>🔢 Number Craft</h1>
+
+    <form method="POST">
+
+        <input type="text" name="numbers"
+        placeholder="Enter numbers (e.g. 10 20 30)" required>
+
+        <select name="operation">
+            <option value="add">Addition (+)</option>
+            <option value="sub">Subtraction (-)</option>
+            <option value="mul">Multiplication (×)</option>
+            <option value="div">Division (÷)</option>
+            <option value="mod">Modulus/Remainder (%)</option>
+        </select>
+
+        <button type="submit">Calculate</button>
+
+        <!-- Proper Reset Button -->
+        <button type="reset" class="reset-btn">Reset</button>
+
+    </form>
+
+    {% if result is not none %}
+        <div class="result">
+            Result: {{ result }}
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
